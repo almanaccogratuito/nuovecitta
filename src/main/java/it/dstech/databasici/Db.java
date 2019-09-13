@@ -52,5 +52,35 @@ public class Db
 		return citta;
 	}
 	
+	public List <Stati> prendiStati (String continente) throws ClassNotFoundException, SQLException
+	{
+		List <Stati> stati = new ArrayList <Stati>();
+		String query = "SELECT name, code FROM world.country where continent = (?);";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		prep.setString(1, continente);
+		ResultSet result = prep.executeQuery();
+		while (result.next())
+		{
+			Stati stato = new Stati();
+			stato.setNome((result.getString(1)));
+			stato.setCodice((result.getString(2)));
+			stati.add(stato);
+		}
+		return stati;
+	}
+	
+	public List <String> prendiContinenti () throws ClassNotFoundException, SQLException
+	{
+		List <String> continenti = new ArrayList <String>();
+		String query = "SELECT distinct(continent) FROM world.country;";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		ResultSet result = prep.executeQuery();
+		while (result.next())
+		{
+			continenti.add(result.getString(1));
+		}
+		return continenti;
+	}
+	
 	
 }
