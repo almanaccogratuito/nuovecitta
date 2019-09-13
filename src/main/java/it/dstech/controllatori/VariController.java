@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.dstech.databasici.Db;
+import it.dstech.stato.Citta;
 import it.dstech.stato.Stati;
 
 @Controller
@@ -40,13 +41,38 @@ public class VariController
 	
 	@PostMapping("/stato")
 
-	public String stati (@RequestParam(name="i")String name , Model model) throws ClassNotFoundException, SQLException
+	public String stati (@RequestParam(name="i")String continente , Model model) throws ClassNotFoundException, SQLException
 	{
 		List <Stati> stati = new ArrayList<Stati>();
-		stati.addAll(conn.prendiStati(name));
+		stati.addAll(conn.prendiStati(continente));
 		model.addAttribute("message", message);
 		model.addAttribute("stati", stati);
 		return "stato";
+	}
+	
+	@PostMapping("citta")
+	public String citta (@RequestParam(name="stato")String codiceStato , Model model) throws ClassNotFoundException, SQLException
+	{
+		List<Citta> city = new ArrayList <Citta>();
+		//questo metodo ti fa tornare la lista di tutte le citta
+		city.addAll(conn.prendiCitta(codiceStato));
+		model.addAttribute(codiceStato);
+		model.addAttribute("message", message);
+		model.addAttribute("citta", city);
+		return "citta";
+	}
+	
+	@PostMapping("nuovacitta")
+	public String nuovacitta (@RequestParam(name="")String nomeCitta , @RequestParam(name="")String distretto, @RequestParam(name="")String codiceStato , Model model ) throws ClassNotFoundException, SQLException
+	{
+		conn.inserisciNuovaCitta(nomeCitta , distretto, codiceStato);
+		message = "citta' aggiunta correttamente, bentornati Marco e Simone , volete aggiungere una nuova citta' ? divertitevi ! :)" ;
+		model.addAttribute("message" , message);
+		
+		List <String> continenti = new ArrayList<String>();
+		continenti.addAll(conn.prendiContinenti());		
+		model.addAttribute("continenti", continenti);
+		return "continente";
 	}
 	
 

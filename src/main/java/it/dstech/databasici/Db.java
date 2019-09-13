@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import it.dstech.stato.Citta;
 import it.dstech.stato.Stati;
@@ -82,5 +83,35 @@ public class Db
 		return continenti;
 	}
 	
-	
+	public void inserisciNuovaCitta (String nomeCitta ,String distretto, String codiceStato) throws ClassNotFoundException, SQLException
+	{
+		Random random = new Random();
+		int max = 0;
+		int min = 0;
+		String queryMax = "SELECT population FROM world.city where CountryCode = (?) order by (population) desc limit 1;";
+		String queryMin = "SELECT population FROM world.city where CountryCode = (?) order by (population) asc limit 1;";
+		String queryInserimento = "INSERT INTO `world`.`city` (`Name`, `CountryCode`, `District`, `Population`) VALUES (?, ?, ?, ?);" ;
+		PreparedStatement prepMax = connessionedb().prepareStatement(queryMax);
+		PreparedStatement prepMin = connessionedb().prepareStatement(queryMin);
+		prepMax.setString(1, codiceStato);
+		prepMin.setString(1, codiceStato);
+		ResultSet result = prepMax.executeQuery();
+		while (result.next())
+		{
+			max=result.getInt(1);
+		}
+		result = prepMin.executeQuery();
+		while (result.next())
+		{
+			min=result.getInt(1);
+		}
+		int diff = max-min;
+		int randomizzazione = random.nextInt(diff) + min;
+		PreparedStatement prepIns = connessionedb().prepareStatement(queryInserimento);
+		prepIns.setString(1, nomeCitta);
+		prepIns.setString(2, codiceStato);
+		prepIns.setString(3, distretto);
+		prepIns.setInt(4, randomizzazione);
+		prepIns.executeUpdate();
+	}
 }
