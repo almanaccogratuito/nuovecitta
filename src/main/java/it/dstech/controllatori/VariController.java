@@ -50,7 +50,7 @@ public class VariController
 		return "stato";
 	}
 	
-	@PostMapping("citta")
+	@PostMapping("cita")
 	public String citta (@RequestParam(name="stato")String codiceStato , Model model) throws ClassNotFoundException, SQLException
 	{
 		List<Citta> city = new ArrayList <Citta>();
