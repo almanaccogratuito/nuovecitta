@@ -16,7 +16,7 @@ public class Db
 	public static Connection connessionedb() throws SQLException, ClassNotFoundException
 	{
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/world?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root" , "root");
+		Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/world?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root" , "dstech");
 		return conn;
 	}
 	public List <Stati> prendiStatiEuropei () throws ClassNotFoundException, SQLException
