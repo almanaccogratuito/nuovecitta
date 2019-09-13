@@ -24,14 +24,7 @@ public class VariController
 	public String continenti (Model model) throws ClassNotFoundException, SQLException
 	{
 		List <String> continenti = new ArrayList<String>();
-		continenti.addAll(conn.prendiContinenti());
-		for (int i = 0; i < continenti.size(); i++) {
-			System.out.println(continenti.get(i));
-			
-		}
-		
-		
-		
+		continenti.addAll(conn.prendiContinenti());		
 		model.addAttribute("continenti", continenti);
 		model.addAttribute("message", message);
 		return "continente";
