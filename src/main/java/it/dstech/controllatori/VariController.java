@@ -16,7 +16,7 @@ import it.dstech.stato.Stati;
 @Controller
 public class VariController
 {
-	@Value
+	@Value("${message}")
 	private String message;
 	
 	Db conn = new Db();
@@ -24,10 +24,17 @@ public class VariController
 	public String continenti (Model model)
 	{
 		List <String> continenti = new ArrayList<String>();
-		continenti.addAll(conn.prendiContinenti());
+		try {
+			continenti.addAll(conn.prendiContinenti());
+		}
+		catch (ClassNotFoundException | SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("continenti", continenti);
 		model.addAttribute("message", message);
-		return "continent";
+		return "continente";
 	}
 	
 	
