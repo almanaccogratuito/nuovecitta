@@ -32,15 +32,22 @@
 	</div>
 
 	<div>
-		<form th:action="@{/stato}" method="POST">
-			<span th:each="i : ${continenti}" >
-			<input type="radio"	name="i" th:value="${i}" th:text="${i}">
-			<br>
-			</span> <input type="submit" value="Invia" />
+	<!-- 	<form th:action="@{/}" method="POST">  -->
+			<table>
+				<tr>
+					<th>Citt<font>&#225</font>
+					</th>
+					<th>Popolazione</th>
+				</tr>
+				<span th:each="c : ${citta}">
+					<tr>
+						<td th:text="${c.getNome())}" />
+						<td th:text="${c.getPopolazione())}" />
+					</tr>
+				</span>
+			</table>
+<!-- 		</form> -->
 
-
-		</form>
-	
 
 
 

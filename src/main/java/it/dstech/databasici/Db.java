@@ -55,7 +55,7 @@ public class Db
 	public List <Stati> prendiStati (String continente) throws ClassNotFoundException, SQLException
 	{
 		List <Stati> stati = new ArrayList <Stati>();
-		String query = "SELECT name, code FROM world.country where continent = (?);";
+		String query = "SELECT name, code FROM world.country where continent = ?;";
 		PreparedStatement prep = connessionedb().prepareStatement(query);
 		prep.setString(1, continente);
 		ResultSet result = prep.executeQuery();

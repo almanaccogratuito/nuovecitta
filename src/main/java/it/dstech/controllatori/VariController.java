@@ -31,15 +31,25 @@ public class VariController
 		return "continente";
 	}
 	
+	@GetMapping("/stato")
+	public String statoSimple(Model model) throws ClassNotFoundException, SQLException
+	{
+		model.addAttribute("message", message);
+		return "stato";
+	}
+	
 	@PostMapping("/stato")
 
-	public String stati (@RequestParam(name="i")String continente , Model model) throws ClassNotFoundException, SQLException
+	public String stati (@RequestParam(name="i")String name , Model model) throws ClassNotFoundException, SQLException
 	{
 		List <Stati> stati = new ArrayList<Stati>();
-		stati.addAll(conn.prendiStati(continente));
+		stati.addAll(conn.prendiStati(name));
+		model.addAttribute("message", message);
 		model.addAttribute("stati", stati);
 		return "stato";
 	}
+	
+
 	
 
 	
