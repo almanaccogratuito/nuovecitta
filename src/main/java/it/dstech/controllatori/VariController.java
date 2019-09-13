@@ -29,6 +29,9 @@ public class VariController
 			System.out.println(continenti.get(i));
 			
 		}
+		
+		
+		
 		model.addAttribute("continenti", continenti);
 		model.addAttribute("message", message);
 		return "continente";
