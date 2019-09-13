@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.dstech.databasici.Db;
 import it.dstech.stato.Stati;
@@ -31,12 +32,17 @@ public class VariController
 	}
 	
 	@PostMapping("/stato")
-	public String stati(Model model) throws ClassNotFoundException, SQLException
+
+	public String stati (@RequestParam(name="i")String continente , Model model) throws ClassNotFoundException, SQLException
 	{
-		model.addAttribute("message",message);
+		List <Stati> stati = new ArrayList<Stati>();
+		stati.addAll(conn.prendiStati(continente));
+		model.addAttribute("stati", stati);
 		return "stato";
-		
 	}
+	
+
+	
 	
 	
 	
