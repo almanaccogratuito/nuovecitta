@@ -32,7 +32,7 @@
 	</div>
 
 	<div>
-	<!-- 	<form th:action="@{/}" method="POST">  -->
+	<!-- <form th:action="@{/nuovaCitta}" method="POST">  -->
 			<table>
 				<tr>
 					<th>Citt<font>&#225</font>
@@ -41,8 +41,8 @@
 				</tr>
 				<span th:each="c : ${citta}">
 					<tr>
-						<td th:text="${c.getNome())}" />
-						<td th:text="${c.getPopolazione())}" />
+						<td th:text="${c.nome)}" />
+						<td th:text="${c.popolazione)}" />
 					</tr>
 				</span>
 			</table>

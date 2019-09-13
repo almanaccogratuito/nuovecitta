@@ -32,7 +32,7 @@
 	</div>
 
 	<div>
-		<form th:action="@{/nuovaCitta}" method="POST">
+		<form th:action="@{/citta}" method="POST">
 
 			<select name="stato">
 				<option th:each="i : ${stati}" th:value="${i.codice}"

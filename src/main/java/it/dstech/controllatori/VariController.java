@@ -59,10 +59,10 @@ public class VariController
 		model.addAttribute(codiceStato);
 		model.addAttribute("message", message);
 		model.addAttribute("citta", city);
-		return "citta";
+		return "ultimaP";
 	}
 	
-	@PostMapping("nuovacitta")
+	@PostMapping("nuovaCitta")
 	public String nuovacitta (@RequestParam(name="")String nomeCitta , @RequestParam(name="")String distretto, @RequestParam(name="")String codiceStato , Model model ) throws ClassNotFoundException, SQLException
 	{
 		conn.inserisciNuovaCitta(nomeCitta , distretto, codiceStato);
