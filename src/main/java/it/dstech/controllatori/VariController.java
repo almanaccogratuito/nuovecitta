@@ -16,22 +16,15 @@ import it.dstech.stato.Stati;
 @Controller
 public class VariController
 {
-	@Value("${message}")
+	@Value("${welcome.message}")
 	private String message;
 	
 	Db conn = new Db();
-	@PostMapping("/")
-	public String continenti (Model model)
+	@GetMapping("/")
+	public String continenti (Model model) throws ClassNotFoundException, SQLException
 	{
 		List <String> continenti = new ArrayList<String>();
-		try {
-			continenti.addAll(conn.prendiContinenti());
-		}
-		catch (ClassNotFoundException | SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		continenti.addAll(conn.prendiContinenti());		
 		model.addAttribute("continenti", continenti);
 		model.addAttribute("message", message);
 		return "continente";
