@@ -18,7 +18,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 		<a class="navbar-brand" href="/">Continente</a>
-	    <a class="navbar-brand"href="/stato">Stato</a>
+		<!--  <a class="navbar-brand"href="/stato">Index</a> -->
 	</nav>
 
 	<main role="main" class="container">
@@ -31,10 +31,10 @@
 		</h2>
 	</div>
 
-	<div>
-	<form th:action="@{/stato}" method="POST">
+<!-- 	<div>
+	<form th:action="@{/citta}" method="POST">
 			<select>
-				<option th:each="i : ${continenti}" th:value="${i}" th:text="${i}">
+				<option th:each="i : ${stati}" th:value="${i.codice}" th:text="${i.nome}">
 				</option>			
 				
 			</select> <input type="submit" value="Invia" />
@@ -42,7 +42,7 @@
 	 
 	 
 	 
-	</div>
+	</div> -->
 
 
 	</main>

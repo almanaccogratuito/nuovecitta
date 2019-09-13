@@ -30,6 +30,13 @@ public class VariController
 		return "continente";
 	}
 	
+	@PostMapping("/stato")
+	public String stati(Model model) throws ClassNotFoundException, SQLException
+	{
+		model.addAttribute("message",message);
+		return "stato";
+		
+	}
 	
 	
 	
