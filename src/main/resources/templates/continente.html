@@ -17,8 +17,8 @@
 <body>
 
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-		<a class="navbar-brand" href="/">Homepage</a> <a class="navbar-brand"
-			href="/stato">Index</a>
+		<a class="navbar-brand" href="/">Continente</a>
+		<!--  <a class="navbar-brand"href="/stato">Index</a> -->
 	</nav>
 
 	<main role="main" class="container">
@@ -32,17 +32,17 @@
 	</div>
 
 	<div>
-		<form th:action="@{/stato}" method="POST">
+	<form th:action="@{/continente}" method="GET">
 			<select>
-				<option th:each="i : ${continente}" th:value="${i}" th:text="${i}">
+				<option th:each="i : ${continenti}" th:value="${i}" th:text="${i}">
 				</option>
 			</select> <input type="submit" value="Invia" />
-		</form>
+	 </form>  
 	</div>
 
 
 	</main>
-	<!-- /.container -->
+	
 
 	<script type="text/javascript"
 		th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
