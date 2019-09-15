@@ -32,7 +32,7 @@
 	</div>
 
 	<div>
-	<!-- <form th:action="@{/nuovaCitta}" method="POST">  -->
+	 <form th:action="@{/nuovaCitta}" method="POST">  
 			<table>
 				<tr>
 					<th>Citt<font>&#225</font>
@@ -41,12 +41,21 @@
 				</tr>
 				<span th:each="c : ${citta}">
 					<tr>
-						<td th:text="${c.nome)}" />
-						<td th:text="${c.popolazione)}" />
+						<td th:text="${c.nome}" />
+						<td th:text="${c.popolazione}" />
 					</tr>
 				</span>
 			</table>
-<!-- 		</form> -->
+			<br>
+			<br>
+			
+			
+		inserisci il nome della tua città :<input type= "text" name = "cityname" /> <br>
+		inserisci il distretto della tua città :<input type= "text" name = "dname" /> <br> 
+		<input type = "hidden" id ="statecode" name="statecode" th:value="${code}" />
+		<input type="submit" value="Invia" />
+			
+ 		</form>
 
 
 

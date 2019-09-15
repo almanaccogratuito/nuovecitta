@@ -50,23 +50,23 @@ public class VariController
 		return "stato";
 	}
 	
-	@PostMapping("cita")
+	@PostMapping("citta")
 	public String citta (@RequestParam(name="stato")String codiceStato , Model model) throws ClassNotFoundException, SQLException
 	{
 		List<Citta> city = new ArrayList <Citta>();
 		//questo metodo ti fa tornare la lista di tutte le citta
 		city.addAll(conn.prendiCitta(codiceStato));
-		model.addAttribute(codiceStato);
+		model.addAttribute("code" , codiceStato);
 		model.addAttribute("message", message);
 		model.addAttribute("citta", city);
 		return "ultimaP";
 	}
 	
 	@PostMapping("nuovaCitta")
-	public String nuovacitta (@RequestParam(name="")String nomeCitta , @RequestParam(name="")String distretto, @RequestParam(name="")String codiceStato , Model model ) throws ClassNotFoundException, SQLException
+	public String nuovacitta (@RequestParam(name="cityname")String nomeCitta , @RequestParam(name="dname")String distretto, @RequestParam(name="statecode")String codiceStato , Model model ) throws ClassNotFoundException, SQLException
 	{
 		conn.inserisciNuovaCitta(nomeCitta , distretto, codiceStato);
-		message = "citta' aggiunta correttamente, bentornati Marco e Simone , volete aggiungere una nuova citta' ? divertitevi ! :)" ;
+		message = "Marco e Simone , avete appena aggiunto una nuova città, per aggiungerne altre andate avanti :) " ;
 		model.addAttribute("message" , message);
 		
 		List <String> continenti = new ArrayList<String>();

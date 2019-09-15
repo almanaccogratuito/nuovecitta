@@ -35,11 +35,11 @@
 		<form th:action="@{/citta}" method="POST">
 
 			<select name="stato">
-				<option th:each="i : ${stati}" th:value="${i.codice}"
-					th:text="${i.nome}"></option>
+				<option th:each="i : ${stati}" th:value="${i.codice}" th:text="${i.nome}"></option>
 
 
-			</select> <input type="submit" value="Invia" />
+			</select>
+			<input type="submit" value="Invia" />
 		</form>
 
 
